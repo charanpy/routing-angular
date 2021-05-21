@@ -1,0 +1,27 @@
+<div class="container">
+  <form class="form-inline mt-4 d-flex justify-content-center" (ngSubmit)="handleFindUser()">
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <input 
+      [(ngModel)]="userName"
+      type="text" name="userName" id="username" class="form-control mx-sm-3">
+
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Find User</button>
+  </form>
+  <button (click)="update()">UPDATE</button>
+  <div class="alert alert-danger m-5" role="alert" *ngIf="Error">
+    {{Error}}
+  </div>
+  <div class="row mt-3">
+    <div class="col col-md-4">
+      <app-user-card
+        [user]="user"
+        *ngIf="user"
+      ></app-user-card>
+    </div>
+    <div class="col col-md-8">
+      <app-repos [repoUrl]="user.repos_url" *ngIf="user?.repos_url"></app-repos>
+    </div>
+  </div>
+</div>
